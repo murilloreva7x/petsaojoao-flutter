@@ -2,32 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'dart:async';
 import 'package:petsaojoao/screens/login/login.dart';
- 
+
 class SplashScreen extends StatefulWidget {
  @override
  _SplashScreenState createState() => _SplashScreenState();
 }
- 
+
 class _SplashScreenState extends State<SplashScreen> {
 @override
 void initState(){
   super.initState();
- 
+
   _mockCheckForSession().then(
     (status){
       if (status) {
         _navigateToLogin();
-      } 
+      }
     }
   );
 }
- 
+
 Future<bool> _mockCheckForSession() async {
   await Future.delayed(Duration(milliseconds: 7000), () {});
- 
+
   return true;
 }
- 
+
 void _navigateToLogin(){
   Navigator.of(context).pushReplacement(
     MaterialPageRoute(
@@ -35,7 +35,7 @@ void _navigateToLogin(){
        ),
   );
 }
- 
+
  @override
  Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +60,7 @@ void _navigateToLogin(){
        ),
      ],
    ),
-    
+
  );
   }
 }
