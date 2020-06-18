@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import '../../dashboard/dashboard.dart';
 import 'carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -149,7 +150,7 @@ class _ThisYourPetState extends State<ThisYourPet> {
     try {
       final title = "PetSaoJoao";
       final description = "Sao joao da Boa Vista";
-      final coords = Coords(-21.9663455, -46.8670338);
+      final coords = Coords(-22.0052608, -46.7857643);
       final availableMaps = await MapLauncher.installedMaps;
 
       showModalBottomSheet(
@@ -210,7 +211,7 @@ class _ThisYourPetState extends State<ThisYourPet> {
               textColor: Colors.white,
               icon: Icon(Icons.arrow_back_ios),
               color: Colors.blueAccent,
-              onPressed: () {},
+              onPressed: () => Dashboard(),
               label: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
