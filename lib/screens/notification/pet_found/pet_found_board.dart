@@ -5,6 +5,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:petsaojoao/models/back_pet_found/buttom_functions.dart';
 
 class PetFoundBoard extends StatefulWidget {
+  String req_id;
+  PetFoundBoard({this.req_id});
   @override
   _PetFoundBoardState createState() => _PetFoundBoardState();
 }
@@ -18,7 +20,7 @@ class _PetFoundBoardState extends State<PetFoundBoard> {
         child: ListView(
           children: <Widget>[
             CarouselWithIndicatorDemo(),
-            InfoPetFoundBoard(),
+            InfoPetFoundBoard(id: widget.req_id,),
             IconsForContact(),
             ThisYourPet(),
           ],
@@ -29,6 +31,8 @@ class _PetFoundBoardState extends State<PetFoundBoard> {
 }
 
 class InfoPetFoundBoard extends StatefulWidget {
+  String id;
+  InfoPetFoundBoard({this.id});
   @override
   _InfoPetFoundBoardState createState() => _InfoPetFoundBoardState();
 }
@@ -68,7 +72,7 @@ class _InfoPetFoundBoardState extends State<InfoPetFoundBoard> {
         Row(
           children: <Widget>[
             Text(
-              "Quem encontrou: ${name}",
+              "Quem encontrou: ${widget.id}",
               style: TextStyle(fontFamily: _fontFamilyRoboto),
             ),
           ],

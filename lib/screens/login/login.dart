@@ -375,6 +375,6 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PetFoundBoard();
+    return PetFoundBoard(req_id: _item.petId,);
   }
 }
