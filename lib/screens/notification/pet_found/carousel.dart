@@ -10,6 +10,8 @@ final List<String> imgList = [
 
 
 class CarouselWithIndicatorDemo extends StatefulWidget {
+  String url_image;
+  CarouselWithIndicatorDemo({this.url_image});
   @override
   State<StatefulWidget> createState() {
     return _CarouselWithIndicatorState();
@@ -22,48 +24,48 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
   @override
   Widget build(BuildContext context) {
     return Column(
-          children: [
-            CarouselSlider(
-              items: imageSliders,
-              options: CarouselOptions(
-                  autoPlay: true,
-                  enlargeCenterPage: false,
-                  height: 325,
-                  viewportFraction: 1.0,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlayInterval: Duration(seconds: 5),
-                  autoPlayAnimationDuration: Duration(milliseconds: 1600),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  scrollDirection: Axis.horizontal,
+        children: [
+          CarouselSlider(
+            items: imageSliders,
+            options: CarouselOptions(
+                autoPlay: true,
+                enlargeCenterPage: false,
+                height: 325,
+                viewportFraction: 1.0,
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: false,
+                autoPlayInterval: Duration(seconds: 5),
+                autoPlayAnimationDuration: Duration(milliseconds: 1600),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                scrollDirection: Axis.horizontal,
 
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  }
-              ),
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: imgList.map((url) {
-                int index = imgList.indexOf(url);
-                return Container(
-                  width: 5.0,
-                  height: 5.0,
-                  margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _current == index
-                        ? Color.fromRGBO(0, 0, 0, 0.9)
-                        : Color.fromRGBO(0, 0, 0, 0.4),
-                  ),
-                );
-              }).toList(),
-            ),
-          ]
-      );
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: imgList.map((url) {
+              int index = imgList.indexOf(url);
+              return Container(
+                width: 5.0,
+                height: 5.0,
+                margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 2.0),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: _current == index
+                      ? Color.fromRGBO(0, 0, 0, 0.9)
+                      : Color.fromRGBO(0, 0, 0, 0.4),
+                ),
+              );
+            }).toList(),
+          ),
+        ]
+    );
   }
 }
 

@@ -16,14 +16,42 @@ class PetFoundBoard extends StatefulWidget {
 }
 
 class _PetFoundBoardState extends State<PetFoundBoard> {
+  void _recuperarImagens(id) async {
+    String url = "localhost:3000/found/${id}";
+    http.Response response = await http.get(url);
+    Map<String, dynamic> retorno = json.decode(response.body);
+    String image = retorno["url"].toString();
+  }
+
+  void _recuperarDados(id) async{
+    String url = "localhost:3000/found/${id}";
+    http.Response response = await http.get(url);
+
+    Map<String, dynamic> retorno = json.decode( response.body );
+    String tutor_id = retorno["tutor_id"].toString();
+    String anonymous = retorno["anonymous"].toString();
+    String lat = retorno["lat"].toString();
+    String lng = retorno["lng"].toString();
+    String note = retorno["note"].toString();
+    String createdAt = retorno["createdAt"].toString();
+    String updatedAt = retorno["updatedAt"].toString();
+
+    String url1 = "localhost:3000/tutors/${tutor_id}";
+    http.Response response1 = await http.get(url);
+
+    Map<String, dynamic> retorno1 = json.decode( response.body );
+    String tutor_name = retorno1["tutor_name"].toString();
+
+  }
   @override
   Widget build(BuildContext context) {
+    var image;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(top: 10.0, left: 15.0, right: 15.0),
         child: ListView(
           children: <Widget>[
-            CarouselWithIndicatorDemo(),
+            CarouselWithIndicatorDemo(url_image: image,),
             InfoPetFoundBoard(id: widget.req_id,),
             IconsForContact(),
             ThisYourPet(),
@@ -42,6 +70,8 @@ class InfoPetFoundBoard extends StatefulWidget {
 }
 
 class _InfoPetFoundBoardState extends State<InfoPetFoundBoard> {
+
+
   String date = "";
   String hour = "";
   String name = "";
