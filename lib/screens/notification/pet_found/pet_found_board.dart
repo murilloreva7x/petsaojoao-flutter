@@ -211,7 +211,14 @@ class _ThisYourPetState extends State<ThisYourPet> {
               textColor: Colors.white,
               icon: Icon(Icons.arrow_back_ios),
               color: Colors.blueAccent,
-              onPressed: () => Dashboard(),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Dashboard()
+                    )
+                );
+              },
               label: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
